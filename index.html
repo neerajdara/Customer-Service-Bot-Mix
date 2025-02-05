@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Customer Service Bot</title>
+        <style>
+         html {
+             background-color: whitesmoke;
+         }
+         body {
+             margin: 0;
+             padding: 0;
+         }
+         .main {
+             display: block;
+             width: 28.5%;
+             margin-left: 20px;
+             height: 500px;
+             border: none;
+             border-radius: 10px;
+             border-style: solid;
+             border-color: rgba(0, 0, 0, 0.459);
+             background: linear-gradient(#000428, #004e92);
+             box-shadow: 3px 15px 30px 2px rgba(0, 0, 0, 0.596);
+             padding: 20px;
+             position: relative;
+         }
+         .chat-box {
+             height: 400px;
+             overflow-y: auto;
+             color: white;
+             padding: 10px;
+         }
+         .ask {
+             font-family: "Open Sans", serif;
+             font-size: small;
+             border: 1.5px solid white;
+             border-radius: 10px;
+             padding: 10px;
+             color: white;
+             width: 70%;
+             text-align: left;
+             background-color: rgba(255, 255, 255, 0);
+         }
+         .input-container {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             position: absolute;
+             bottom: 25px;
+             width: 90%;
+         }
+         input[type="text"] {
+             flex: 1;
+             padding: 10px;
+             border-radius: 10px;
+             border: 1.5px solid white;
+             font-size: 14px;
+             margin-left:-10px;
+         }
+         button {
+             width: 45px;
+             height: 45px;
+             border: none;
+             border-radius: 10px;
+             box-shadow: 3px 15px 50px rgba(0, 0, 0, 0.596);
+             background: #ffffff;
+             color:black;
+             margin-left: 10px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             cursor: pointer;
+         }
+         i {
+             font-size: 20px;
+             color: #000000;
+         } 
+         h1{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-left:45px;
+         }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <h1>CUSTOMER SERVICE BOT</h1>
+        <div class="main">
+            <div class="chat-box">
+                {% for sender, message in chat_history %}
+                    <p class="message {% if sender == 'You' %}user{% else %}bot{% endif %}">{{ sender }}: {{ message }}</p>
+                {% endfor %}
+            </div>
+            <form method="POST" class="input-container">
+                <input type="text" name="message" placeholder="Ask the Chatbot..." required>
+                <button type="submit"><i class="fa-solid fa-rocket"></i></button>
+            </form>
+        </div>
+    </body>
+</html>
